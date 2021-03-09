@@ -4,13 +4,9 @@ signal Player1wins
 signal Player2wins
 signal Tie
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# Declare member variables here:
 var playernum = 1
 var scorematrix = []
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

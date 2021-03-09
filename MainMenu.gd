@@ -1,4 +1,5 @@
 extends CanvasLayer
+export (PackedScene) var CreatePlayer
 
 
 # Declare member variables here. Examples:
@@ -17,4 +18,4 @@ func _ready():
 
 
 func _on_CreateGameButton_pressed():
-	get_tree().change_scene("res://GameBoard.tscn") # Replace with function body.
+	get_tree().change_scene("res://Server.tscn") # Replace with function body.
