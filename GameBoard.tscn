@@ -1,0 +1,357 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://kisspng-tic-tac-toe-bitmap-computer-icons-bmp-file-format-5b212cde520e92.4886368715289008303361.png" type="Texture" id=1]
+[ext_resource path="res://FifteenNarrow.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://GameBoard.gd" type="Script" id=3]
+[ext_resource path="res://X.png" type="Texture" id=4]
+[ext_resource path="res://O.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 37
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 54
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 75
+font_data = ExtResource( 2 )
+
+[node name="GameBoard" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = 2.24493
+margin_right = 490.245
+margin_bottom = 741.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CrissCross" type="Sprite" parent="."]
+position = Vector2( 253.301, 349.032 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="ExitButton" type="Button" parent="."]
+margin_left = 25.8284
+margin_top = 23.3085
+margin_right = 200.828
+margin_bottom = 85.3085
+custom_fonts/font = SubResource( 1 )
+text = "Exit"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Square1" type="TextureButton" parent="."]
+margin_left = 30.5676
+margin_top = 136.811
+margin_right = 158.568
+margin_bottom = 249.811
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Square2" type="TextureButton" parent="."]
+margin_left = 190.516
+margin_top = 140.973
+margin_right = 318.516
+margin_bottom = 253.973
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Square3" type="TextureButton" parent="."]
+margin_left = 344.518
+margin_top = 142.162
+margin_right = 472.518
+margin_bottom = 255.162
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Square4" type="TextureButton" parent="."]
+margin_left = 29.9731
+margin_top = 289.624
+margin_right = 157.973
+margin_bottom = 402.624
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Square5" type="TextureButton" parent="."]
+margin_left = 188.138
+margin_top = 292.597
+margin_right = 316.138
+margin_bottom = 405.597
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Square6" type="TextureButton" parent="."]
+margin_left = 344.518
+margin_top = 292.597
+margin_right = 472.518
+margin_bottom = 405.597
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Square7" type="TextureButton" parent="."]
+margin_left = 34.1351
+margin_top = 446.599
+margin_right = 162.135
+margin_bottom = 559.599
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Square8" type="TextureButton" parent="."]
+margin_left = 187.543
+margin_top = 444.815
+margin_right = 315.543
+margin_bottom = 557.815
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Square9" type="TextureButton" parent="."]
+margin_left = 342.734
+margin_top = 446.599
+margin_right = 470.734
+margin_bottom = 559.599
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="X1" type="Sprite" parent="."]
+position = Vector2( 90.7446, 195.25 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="X2" type="Sprite" parent="."]
+position = Vector2( 253.245, 193.75 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="X3" type="Sprite" parent="."]
+position = Vector2( 407.245, 194.25 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="X4" type="Sprite" parent="."]
+position = Vector2( 98.7447, 354.75 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="X5" type="Sprite" parent="."]
+position = Vector2( 254.745, 353.25 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="X6" type="Sprite" parent="."]
+position = Vector2( 409.245, 352.75 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="X7" type="Sprite" parent="."]
+position = Vector2( 99.7447, 507.25 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="X8" type="Sprite" parent="."]
+position = Vector2( 253.745, 507.25 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="X9" type="Sprite" parent="."]
+position = Vector2( 411.245, 509.75 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="O1" type="Sprite" parent="."]
+position = Vector2( 92.1913, 195.924 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="O2" type="Sprite" parent="."]
+position = Vector2( 250.28, 195.083 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="O3" type="Sprite" parent="."]
+position = Vector2( 405.005, 192.56 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="O4" type="Sprite" parent="."]
+position = Vector2( 93.873, 355.694 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="O5" type="Sprite" parent="."]
+position = Vector2( 252.802, 351.489 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="O6" type="Sprite" parent="."]
+position = Vector2( 406.686, 354.012 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="O7" type="Sprite" parent="."]
+position = Vector2( 94.7139, 511.26 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="O8" type="Sprite" parent="."]
+position = Vector2( 251.962, 510.419 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="O9" type="Sprite" parent="."]
+position = Vector2( 407.527, 507.055 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PlayAgainButton" type="Button" parent="."]
+margin_left = 140.485
+margin_top = 605.032
+margin_right = 352.485
+margin_bottom = 686.032
+custom_fonts/font = SubResource( 2 )
+text = "Play Again"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Player1wins" type="Label" parent="."]
+margin_left = 14.1504
+margin_top = 283.589
+margin_right = 490.15
+margin_bottom = 387.589
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0431373, 0.913725, 0.0784314, 1 )
+text = "Player 1 Wins!!!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player2wins" type="Label" parent="."]
+margin_left = 14.1504
+margin_top = 283.589
+margin_right = 490.15
+margin_bottom = 387.589
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0431373, 0.913725, 0.0784314, 1 )
+text = "Player 2 Wins!!!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Label" parent="."]
+margin_left = 14.1504
+margin_top = 283.589
+margin_right = 490.15
+margin_bottom = 387.589
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0431373, 0.913725, 0.0784314, 1 )
+text = "Game Over :("
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="Player1wins" from="." to="." method="_on_GameBoard_Player1wins"]
+[connection signal="Player2wins" from="." to="." method="_on_GameBoard_Player2wins"]
+[connection signal="Tie" from="." to="." method="_on_GameBoard_Tie"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="Square1" to="." method="_on_Square1_pressed"]
+[connection signal="pressed" from="Square2" to="." method="_on_Square2_pressed"]
+[connection signal="pressed" from="Square3" to="." method="_on_Square3_pressed"]
+[connection signal="pressed" from="Square4" to="." method="_on_Square4_pressed"]
+[connection signal="pressed" from="Square5" to="." method="_on_Square5_pressed"]
+[connection signal="pressed" from="Square6" to="." method="_on_Square6_pressed"]
+[connection signal="pressed" from="Square7" to="." method="_on_Square7_pressed"]
+[connection signal="pressed" from="Square8" to="." method="_on_Square8_pressed"]
+[connection signal="pressed" from="Square9" to="." method="_on_Square9_pressed"]
+[connection signal="pressed" from="PlayAgainButton" to="." method="_on_PlayAgainButton_pressed"]

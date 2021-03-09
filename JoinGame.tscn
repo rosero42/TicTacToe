@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://FifteenNarrow.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 46
+font_data = ExtResource( 1 )
+
+[node name="JoinGame" type="CanvasLayer"]
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 488.0
+margin_bottom = 741.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="JoinRandom" type="Button" parent="."]
+margin_left = 107.15
+margin_top = 125.405
+margin_right = 391.15
+margin_bottom = 195.405
+custom_fonts/font = SubResource( 1 )
+text = "Join Random Game"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="JoinCreated" type="Button" parent="."]
+margin_left = 96.8315
+margin_top = 546.066
+margin_right = 397.831
+margin_bottom = 616.066
+custom_fonts/font = SubResource( 1 )
+text = "Join Created Game"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CodeEntry" type="LineEdit" parent="."]
+margin_left = 180.227
+margin_top = 388.955
+margin_right = 300.227
+margin_bottom = 427.955
+placeholder_text = "Enter Code..."
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
