@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://FifteenNarrow.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://LaunchPage.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 74
@@ -11,14 +11,13 @@ font_data = ExtResource( 1 )
 size = 34
 font_data = ExtResource( 1 )
 
-[node name="MainMenu" type="CanvasLayer"]
+[node name="LaunchPage" type="CanvasLayer"]
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 488.0
 margin_bottom = 741.0
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -34,27 +33,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="JoinGameButton" type="Button" parent="."]
+[node name="LaunchButton" type="Button" parent="."]
 margin_left = 150.627
 margin_top = 355.67
 margin_right = 349.627
 margin_bottom = 466.67
 custom_fonts/font = SubResource( 2 )
-text = "Join Game"
+text = "Launch Server"
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="CreateGameButton" type="Button" parent="."]
+[node name="JoinButton" type="Button" parent="."]
 margin_left = 150.127
 margin_top = 529.17
 margin_right = 349.127
 margin_bottom = 640.17
 custom_fonts/font = SubResource( 2 )
-text = "Create Game"
+text = "Join Server"
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="CreateGameButton" to="." method="_on_CreateGameButton_pressed"]
+[connection signal="pressed" from="LaunchButton" to="." method="_on_LaunchButton_pressed"]
+[connection signal="pressed" from="JoinButton" to="." method="_on_JoinButton_pressed"]
