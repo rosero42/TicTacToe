@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://FifteenNarrow.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://QuinzeNarrow.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RegisterPage.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 74
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 34
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="RegisterPage" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 488.0
+margin_bottom = 741.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 93.9792
+margin_top = 203.071
+margin_right = 390.979
+margin_bottom = 301.071
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tic Tac Toe"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameEntryBox" type="LineEdit" parent="."]
+margin_left = 104.0
+margin_top = 442.635
+margin_right = 381.0
+margin_bottom = 488.635
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="EnterButton" type="Button" parent="."]
+margin_left = 138.854
+margin_top = 567.576
+margin_right = 337.854
+margin_bottom = 678.576
+custom_fonts/font = SubResource( 2 )
+text = "Enter"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="EnterLabel" type="Label" parent="."]
+margin_top = 359.0
+margin_right = 488.0
+margin_bottom = 418.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Please enter your name:"
+align = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="EnterButton" to="." method="_on_EnterButton_pressed"]

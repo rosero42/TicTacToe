@@ -1,20 +1,19 @@
-extends Node2D
+extends CanvasLayer
 
 
 # Declare member variables here. Examples:
-const PORT = 78499
-var hostname = "localhost"
-const MAX = 2
-var _server = WebSocketServer.new()
+signal server_name_entered
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var error = _server.listen(PORT)
-	if error != OK:
-		print("Unable to start server")
-	print(hostname)
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_EnterButton_pressed():
+	emit_signal("server_name_entered")

@@ -1,13 +1,6 @@
 extends CanvasLayer
-export (PackedScene) var CreatePlayer
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
+signal create_game
 func _ready():
 	pass # Replace with function body.
 
@@ -17,5 +10,7 @@ func _ready():
 #	pass
 
 
+
+
 func _on_CreateGameButton_pressed():
-	get_tree().change_scene("res://Server.tscn") # Replace with function body.
+	emit_signal("create_game")
