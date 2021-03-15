@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal create_game
+signal join_game
 func _ready():
 	pass # Replace with function body.
 

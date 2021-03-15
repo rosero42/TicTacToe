@@ -3,6 +3,7 @@ extends CanvasLayer
 
 # Declare member variables here. Examples:
 signal server_name_entered
+var servername
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,4 +17,5 @@ func _ready():
 
 
 func _on_EnterButton_pressed():
-	emit_signal("server_name_entered")
+	servername = $NameEntryBox.get_text()
+	emit_signal("server_name_entered", servername)

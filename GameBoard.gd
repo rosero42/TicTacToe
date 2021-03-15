@@ -7,6 +7,7 @@ signal Tie
 # Declare member variables here:
 var playernum = 1
 var scorematrix = []
+var gameid
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

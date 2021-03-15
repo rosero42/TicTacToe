@@ -19,4 +19,4 @@ func _ready():
 func _on_EnterButton_pressed():
 	enteredname = $NameEntryBox.get_text()
 	print(enteredname)
-	emit_signal("name_entered")
+	emit_signal("name_entered", enteredname)
