@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://FifteenNarrow.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://JoinGame.gd" type="Script" id=2]
+[ext_resource path="res://QuinzeNarrow.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 46
+size = 74
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 3 )
+
 [node name="JoinGame" type="CanvasLayer"]
+script = ExtResource( 2 )
 
 [node name="Background" type="ColorRect" parent="."]
 margin_right = 488.0
@@ -17,37 +24,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="JoinRandom" type="Button" parent="."]
-margin_left = 107.15
-margin_top = 125.405
-margin_right = 391.15
-margin_bottom = 195.405
+[node name="Title" type="Label" parent="."]
+margin_left = 93.9792
+margin_top = 203.071
+margin_right = 390.979
+margin_bottom = 301.071
 custom_fonts/font = SubResource( 1 )
-text = "Join Random Game"
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tic Tac Toe"
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="JoinCreated" type="Button" parent="."]
-margin_left = 96.8315
-margin_top = 546.066
-margin_right = 397.831
-margin_bottom = 616.066
-custom_fonts/font = SubResource( 1 )
-text = "Join Created Game"
+[node name="BacktoMain" type="Button" parent="."]
+margin_left = 145.475
+margin_top = 317.018
+margin_right = 344.475
+margin_bottom = 362.018
+custom_fonts/font = SubResource( 2 )
+text = "Back to Main Menu"
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-
-[node name="CodeEntry" type="LineEdit" parent="."]
-margin_left = 180.227
-margin_top = 388.955
-margin_right = 300.227
-margin_bottom = 427.955
-placeholder_text = "Enter Code..."
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[connection signal="pressed" from="BacktoMain" to="." method="_on_BacktoMain_pressed"]

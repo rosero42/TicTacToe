@@ -11,9 +11,22 @@ var gameid
 signal exit
 var player1
 var player2
+var numplayers = 0
+signal start_game
+signal move_made
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hidebuttons()
+	start_game()
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func start_game():
 	playernum = 1
 	$Player1wins.hide()
 	$Player2wins.hide()
@@ -37,7 +50,6 @@ func _ready():
 	$O8.hide()
 	$O9.hide()
 	$PlayAgainButton.hide()
-	hidebuttons()
 	for x in range(3):
 		scorematrix.append([])
 		scorematrix[x] = []
@@ -45,13 +57,9 @@ func _ready():
 			scorematrix[x].append([])
 			scorematrix[x][y] = 0
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func checkscore():
 	## First check rows
+	emit_signal("move_made")
 	for x in range(3):
 		var row = scorematrix[x][0] + scorematrix[x][1] + scorematrix[x][2]
 		var mulrow = scorematrix[x][0] * scorematrix[x][1] * scorematrix[x][2]
@@ -219,7 +227,7 @@ func _on_GameBoard_Player2wins():
 
 
 func _on_PlayAgainButton_pressed():
-	_ready()
+	start_game()
 
 func hidebuttons():
 	$Square1.hide()
@@ -246,6 +254,18 @@ func showbuttons():
 
 
 func _on_GameBoard_Tie():
+	update_board()
 	$GameOver.show()
 	$PlayAgainButton.show()
 	hidebuttons()
+
+func update_board():
+	var squarenum = 1
+	for row in range(3):
+		for col in range(3):
+			if scorematrix[row][col] == 1:
+				get_node('O' + str(squarenum)).show()
+				get_node('Square' + str(squarenum)).hide()
+			elif scorematrix[row][col] == 2:
+				get_node('X' + str(squarenum)).show()
+				get_node('Square' + str(squarenum)).hide()
