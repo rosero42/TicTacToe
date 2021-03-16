@@ -57,7 +57,8 @@ func _server_name_entered(servername):
 # This function is called when a joining user enteres 
 # their name on the registration page
 func join_name_entered(name):
-	$Server.connect_to_server(name,"10.0.0.249")
+	var servername = get_node('JoinServerPage/NameEntryBox').get_text()
+	$Server.connect_to_server(name,"localhost")
 	var mainmenu = preload("res://MainMenu.tscn").instance()
 	add_child(mainmenu)
 	mainmenu.player_name = name
@@ -78,6 +79,7 @@ func _create_game(name):
 func _on_Server_open_game(id):
 	print("open game function")
 	add_child($Server.games[id])
+	$Server.games[id].showbuttons()
 	$Server.games[id].connect("move_made", $Server, "update_board")
 	$Server.games[id].connect("exit", self, "exit_game")
 
@@ -86,8 +88,9 @@ func _on_Server_open_game(id):
 # exit button
 func exit_game(id):
 	print("in exit game funciton")
-	remove_child($Server.games[id])
+	remove_child(get_node('GameBoard'))
 	$Server.games.erase(id)
+	$Server.game_data.erase(id)
 
 # This function is called when a user clicks Join Game 
 # on the main menu page
@@ -114,7 +117,8 @@ func _join_game(name):
 # on the join game page
 func _game_selected(gameid, name):
 	add_child($Server.games[gameid])
-	$Server.games[gameid].connect("move_made", $Server, "update_score")
+	$Server.games[gameid].showbuttons()
+	$Server.games[gameid].connect("move_made", $Server, "update_board")
 	$Server.games[gameid].get_node('Waiting').hide()
 	$Server.games[gameid].player2 = name
 	$Server.games[gameid].connect("exit", self, "exit_game_2")
@@ -126,7 +130,9 @@ func _game_selected(gameid, name):
 # using the exit button
 func exit_game_2(id):
 	print("in exit game funciton 2")
-	remove_child($Server.games[id])
+	remove_child(get_node('GameBoard'))
+	$Server.games.erase(id)
+	$Server.game_data.erase(id)
 
 func _back_to_main():
 	remove_child(get_node('JoinGame'))
@@ -137,6 +143,7 @@ func _on_Server_games_received():
 	for game_id in $Server.game_data:
 		var game = preload("res://GameBoard.tscn").instance()
 		$Server.games[game_id] = game
+		$Server.games[game_id].gameid = game_id
 		$Server.games[game_id].player1 = $Server.game_data[game_id]
 	var joingame = preload("res://JoinGame.tscn").instance()
 	add_child(joingame)

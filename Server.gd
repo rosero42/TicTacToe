@@ -93,7 +93,6 @@ remote func _send_player_info(id, info):
 			print(players[player])
 
 func create_game(name):
-	#var newgame = preload("res://GameBoard.tscn").instance()
 	if not get_tree().is_network_server():
 		var local_game_id = get_tree().get_network_unique_id()
 		#newgame.gameid = local_game_id
@@ -139,7 +138,7 @@ remote func send_games(local_request_id):
 	if get_tree().is_network_server():
 		for game_id in game_data:
 			if( game_id != local_request_id):
-				rpc_id(local_request_id, 'sending_games', local_request_id, game_data[game_id])
+				rpc_id(local_request_id, 'sending_games', game_id, game_data[game_id])
 
 remote func sending_games(id, info):
 	print("in sending games")
@@ -147,3 +146,12 @@ remote func sending_games(id, info):
 	print(id)
 	print(info)
 	emit_signal("games_received")
+
+func update_board(game_id, squarenum):
+	var local_request_id = get_tree().get_network_unique_id()
+	rpc('_update_board', local_request_id, game_id, squarenum)
+
+remote func _update_board(request_id, game_id, squarenum):
+	if games[game_id].buttonstates[int(squarenum)] == 0:
+		var squarepressed = "Square" + squarenum
+		games[game_id].get_node(squarepressed).emit_signal("pressed")
