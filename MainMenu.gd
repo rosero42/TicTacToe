@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal create_game
 signal join_game
+var player_name
 func _ready():
 	pass # Replace with function body.
 
@@ -14,4 +15,8 @@ func _ready():
 
 
 func _on_CreateGameButton_pressed():
-	emit_signal("create_game")
+	emit_signal("create_game", player_name)
+
+
+func _on_JoinGameButton_pressed():
+	emit_signal("join_game", player_name)

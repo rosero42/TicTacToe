@@ -7,13 +7,13 @@ const PORT = 8499
 var hostname = "localhost"
 const MAX = 30
 #var _server = WebSocketServer.new()
-var games = []
+var games = {}
 var gamenums = 0
 var enteredname
 #var network = NetworkedMultiplayerENet.new()
 var players = {}
 var player_data = {name = '', player_score = 0}
-
+signal open_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -66,6 +66,7 @@ func _connected_to_server():
 
 func _on_player_disconnected(id):
 	players.erase(id)
+	print("player disconnected")
 
 func _on_player_connected(connected_player_id):
 	var local_player_id = get_tree()
@@ -94,13 +95,31 @@ remote func _send_player_info(id, info):
 		for player in players:
 			print(players[player])
 
-func create_game():
-	var newgame = preload("res://GameBoard.tscn").instance()
-	newgame.gameid = gamenums
-	gamenums = gamenums + 1
-	games[gamenums] = newgame
+func create_game(name):
+	#var newgame = preload("res://GameBoard.tscn").instance()
 	if not get_tree().is_network_server():
-		_send_game_init()
+		var local_game_id = get_tree().get_network_unique_id()
+		#newgame.gameid = local_game_id
+		#games[newgame.gameid] = newgame
+		rpc('_send_game_info',local_game_id,name)
+		var new_game = preload("res://GameBoard.tscn").instance()
+		games[local_game_id] = new_game
+		new_game.gameid = local_game_id
+		new_game.player1 = name
+		emit_signal("open_game", local_game_id)
+	else:
+		var game_id = get_tree().get_network_unique_id()
+		print("game id: " + str(game_id))
+		var new_game = preload("res://GameBoard.tscn").instance()
+		games[game_id] = new_game
+		new_game.gameid = game_id
+		new_game.player1 = name
+		emit_signal("open_game", game_id)
 
-remote func _send_game_init():
-	pass
+remote func _send_game_info(id,name):
+	var new_game = preload("res://GameBoard.tscn").instance()
+	new_game.gameid = id
+	games[id] = new_game
+	new_game.player1 = name
+	new_game.set_network_master(id)
+

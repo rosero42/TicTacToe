@@ -8,6 +8,9 @@ signal Tie
 var playernum = 1
 var scorematrix = []
 var gameid
+signal exit
+var player1
+var player2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,15 +37,7 @@ func _ready():
 	$O8.hide()
 	$O9.hide()
 	$PlayAgainButton.hide()
-	$Square1.show()
-	$Square2.show()
-	$Square3.show()
-	$Square4.show()
-	$Square5.show()
-	$Square6.show()
-	$Square7.show()
-	$Square8.show()
-	$Square9.show()
+	hidebuttons()
 	for x in range(3):
 		scorematrix.append([])
 		scorematrix[x] = []
@@ -56,10 +51,6 @@ func _ready():
 #	pass
 
 func checkscore():
-	#Check if there are any moves left
-	if playernum > 9:
-		emit_signal("Tie")
-		return
 	## First check rows
 	for x in range(3):
 		var row = scorematrix[x][0] + scorematrix[x][1] + scorematrix[x][2]
@@ -97,9 +88,13 @@ func checkscore():
 	elif diag == 3 && muldiag == 1:
 		emit_signal("Player2wins")
 		return
+	#Check if there are any moves left
+	if playernum > 9:
+		emit_signal("Tie")
+		return
 
 func _on_ExitButton_pressed():
-	get_tree().change_scene("res://Main.tscn") # Replace with function body.
+	emit_signal("exit", gameid) # Replace with function body.
 
 
 func _on_Square1_pressed():
@@ -236,7 +231,17 @@ func hidebuttons():
 	$Square7.hide()
 	$Square8.hide()
 	$Square9.hide()
-	
+
+func showbuttons():
+	$Square1.show()
+	$Square2.show()
+	$Square3.show()
+	$Square4.show()
+	$Square5.show()
+	$Square6.show()
+	$Square7.show()
+	$Square8.show()
+	$Square9.show()
 
 
 
