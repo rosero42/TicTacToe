@@ -128,6 +128,8 @@ func join_game(gameid):
 remote func _start_game(gameid):
 	games[gameid].showbuttons()
 	games[gameid].get_node('Waiting').hide()
+	games[gameid].player = 3
+
 
 func get_games():
 	var local_request_id = get_tree().get_network_unique_id()
@@ -155,3 +157,7 @@ remote func _update_board(request_id, game_id, squarenum):
 	if games[game_id].buttonstates[int(squarenum)] == 0:
 		var squarepressed = "Square" + squarenum
 		games[game_id].get_node(squarepressed).emit_signal("pressed")
+#	if games[game_id].player % games[game_id].turn == 0:
+#		games[game_id].showbuttons()
+#	else:
+#		games[game_id].hidebuttons()

@@ -79,7 +79,7 @@ func _create_game(name):
 func _on_Server_open_game(id):
 	print("open game function")
 	add_child($Server.games[id])
-	$Server.games[id].showbuttons()
+	$Server.games[id].hidebuttons()
 	$Server.games[id].connect("move_made", $Server, "update_board")
 	$Server.games[id].connect("exit", self, "exit_game")
 
@@ -117,12 +117,13 @@ func _join_game(name):
 # on the join game page
 func _game_selected(gameid, name):
 	add_child($Server.games[gameid])
-	$Server.games[gameid].showbuttons()
+	$Server.games[gameid].hidebuttons()
 	$Server.games[gameid].connect("move_made", $Server, "update_board")
 	$Server.games[gameid].get_node('Waiting').hide()
 	$Server.games[gameid].player2 = name
 	$Server.games[gameid].connect("exit", self, "exit_game_2")
 	$Server.games[gameid].numplayers = 2
+	$Server.games[gameid].player = 2
 	$Server.join_game(gameid)
 
 # This function is called when player2 

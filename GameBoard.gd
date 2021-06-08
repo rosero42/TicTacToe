@@ -5,16 +5,18 @@ signal Player2wins
 signal Tie
 
 # Declare member variables here:
-var playernum = 1
+var playernum
+var player
+var player1
+var player2
 var scorematrix = []
 var gameid
 signal exit
-var player1
-var player2
 var numplayers = 0
 signal start_game
 signal move_made
-var buttonstates = {}
+var buttonstates = {} 
+var turn = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -115,12 +117,7 @@ func _on_Square1_pressed():
 	else:
 		$X1.show()
 		scorematrix[0][0] = 2
-	playernum += 1
-	$Square1.hide()
-	buttonstates[1] = 1
-	emit_signal("move_made",gameid,'1')
-	checkscore()
-
+	button_pressed(1)
 
 
 func _on_Square2_pressed():
@@ -130,12 +127,7 @@ func _on_Square2_pressed():
 	else:
 		$X2.show() 
 		scorematrix[0][1] = 2
-	playernum += 1
-	$Square2.hide()
-	buttonstates[2] = 1
-	emit_signal("move_made",gameid,'2')
-	checkscore()
-
+	button_pressed(2)
 
 func _on_Square3_pressed():
 	if playernum % 2 == 0:
@@ -144,11 +136,7 @@ func _on_Square3_pressed():
 	else:
 		$X3.show()
 		scorematrix[0][2] = 2
-	playernum += 1
-	$Square3.hide()
-	buttonstates[3] = 1
-	emit_signal("move_made",gameid,'3')
-	checkscore()
+	button_pressed(3)
 
 
 func _on_Square4_pressed():
@@ -158,11 +146,7 @@ func _on_Square4_pressed():
 	else:
 		$X4.show()
 		scorematrix[1][0] = 2
-	playernum += 1
-	$Square4.hide()
-	buttonstates[4] = 1
-	emit_signal("move_made",gameid,'4')
-	checkscore()
+	button_pressed(4)
 
 
 func _on_Square5_pressed():
@@ -172,11 +156,7 @@ func _on_Square5_pressed():
 	else:
 		$X5.show()
 		scorematrix[1][1] = 2
-	playernum += 1
-	$Square5.hide()
-	buttonstates[5] = 1
-	emit_signal("move_made",gameid,'5')
-	checkscore()
+	button_pressed(5)
 
 
 func _on_Square6_pressed():
@@ -186,11 +166,7 @@ func _on_Square6_pressed():
 	else:
 		$X6.show()
 		scorematrix[1][2] = 2
-	playernum += 1
-	$Square6.hide()
-	buttonstates[6] = 1
-	emit_signal("move_made",gameid,'6')
-	checkscore()
+	button_pressed(6)
 
 
 func _on_Square7_pressed():
@@ -200,11 +176,7 @@ func _on_Square7_pressed():
 	else:
 		$X7.show()
 		scorematrix[2][0] = 2
-	playernum += 1
-	$Square7.hide()
-	buttonstates[7] = 1
-	emit_signal("move_made",gameid,'7')
-	checkscore()
+	button_pressed(7)
 
 
 func _on_Square8_pressed():
@@ -214,11 +186,7 @@ func _on_Square8_pressed():
 	else:
 		$X8.show()
 		scorematrix[2][1] = 2
-	playernum += 1
-	$Square8.hide()
-	buttonstates[8] = 1
-	emit_signal("move_made",gameid,'8')
-	checkscore()
+	button_pressed(8)
 
 
 func _on_Square9_pressed():
@@ -228,10 +196,22 @@ func _on_Square9_pressed():
 	else:
 		$X9.show()
 		scorematrix[2][2] = 2
+	button_pressed(9)
+
+
+func button_pressed(buttonnum):
 	playernum += 1
-	$Square9.hide()
-	buttonstates[9] = 1
-	emit_signal("move_made",gameid,'9')
+	buttonstates[buttonnum] = 1
+	turn += 1
+	if turn % 2 == 0 && player == 2:
+		showbuttons()
+	elif player == 2:
+		hidebuttons()
+	elif turn % 2 != 0:
+		showbuttons()
+	else:
+		hidebuttons()
+	emit_signal("move_made", gameid, str(buttonnum))
 	checkscore()
 
 
@@ -262,15 +242,20 @@ func hidebuttons():
 	$Square9.hide()
 
 func showbuttons():
-	$Square1.show()
-	$Square2.show()
-	$Square3.show()
-	$Square4.show()
-	$Square5.show()
-	$Square6.show()
-	$Square7.show()
-	$Square8.show()
-	$Square9.show()
+	for i in range(9):
+		if buttonstates[i+1] == 0:
+			var squarepressed = "Square" + str(i+1)
+			get_node(squarepressed).show()
+	
+#	$Square1.show()
+#	$Square2.show()
+#	$Square3.show()
+#	$Square4.show()
+#	$Square5.show()
+#	$Square6.show()
+#	$Square7.show()
+#	$Square8.show()
+#	$Square9.show()
 
 
 

@@ -7,5 +7,6 @@
 script = ExtResource( 2 )
 
 [node name="Server" parent="." instance=ExtResource( 1 )]
+
 [connection signal="games_received" from="Server" to="." method="_on_Server_games_received"]
 [connection signal="open_game" from="Server" to="." method="_on_Server_open_game"]
